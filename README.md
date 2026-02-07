@@ -1,4 +1,4 @@
-# GazeFlow
+# 👀GazeFlow
 
 XR eye‑tracking experience that explores how fragmented visual moments can be measured, understood, and reshaped into a clearer picture in virtual space.
 
