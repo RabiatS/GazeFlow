@@ -15,6 +15,8 @@ We’re inspired by work like [Luminopia](https://www.luminopia.com/) and VR‑b
 ---
 ## Team
 ### Team Name: PUJLY GazeFlow
+"Do you see the vision"
+
 <img width="512" height="384" alt="image" src="https://github.com/user-attachments/assets/85998768-4aae-4ab8-abf4-3b1e29d63aeb" />
 
 
