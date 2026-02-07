@@ -3,7 +3,9 @@
 A calm XR eye‑tracking experience that turns scattered glances into a living mosaic of light, exploring how our attention shapes virtual space in real time.
 
 
-https://github.com/user-attachments/assets/70173b5e-bb16-48c7-86ca-c5544a595ccd
+
+https://github.com/user-attachments/assets/12852ec9-adb7-4423-9744-9ef938f13a1a
+
 
 ---
 
@@ -56,7 +58,7 @@ Instead of tests and scores, the prototype focuses on a **calm, aesthetic experi
 ---
 
 ## Current Prototype: Mosaic Gaze Scene
-
+https://github.com/user-attachments/assets/70173b5e-bb16-48c7-86ca-c5544a595ccd
 ### 1. Floating Attention Tiles
 
 Around the user, we place a ring / cloud of floating tiles in VR:
