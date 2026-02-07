@@ -148,3 +148,26 @@ We’re still actively building. Some of the things on our near‑term roadmap:
 ```bash
 git clone https://github.com/RabiatS/GazeFlow.git
 cd GazeFlow
+
+
+
+# Check status
+git status
+
+# Pull latest changes
+git pull origin main
+
+# Stage all changes
+git add .
+
+# Commit with message
+git commit -m "Your message here"
+
+# Push to GitHub
+git push origin main
+
+# View commit history
+git log --oneline
+
+# Undo uncommitted changes
+git checkout .
