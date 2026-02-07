@@ -48,3 +48,8 @@ sysinfo.txt
 # APK/AAB files (builds)
 *.apk
 *.aab
+
+# Documentation files (local only)
+INNOVATION_IMPROVEMENTS.md
+QUEST_TROUBLESHOOTING.md
+VISUAL_IMPROVEMENTS_SETUP.md
