@@ -3,9 +3,24 @@
 A calm XR eye‑tracking experience that turns scattered glances into a living mosaic of light, exploring how our attention shapes virtual space in real time.
 
 
+<!-- <video src="[YOUR_VIDEO_URL](https://github.com/user-attachments/assets/05e36958-df1b-4648-9838-4d500ed33aa3)" width="400" height="200" controls></video>
 
-https://github.com/user-attachments/assets/12852ec9-adb7-4423-9744-9ef938f13a1a
 
+https://github.com/user-attachments/assets/05e36958-df1b-4648-9838-4d500ed33aa3
+
+
+https://github.com/user-attachments/assets/12852ec9-adb7-4423-9744-9ef938f13a1a -->
+
+<table>
+  <tr>
+    <td>
+      <video src="https://github.com/user-attachments/assets/05e36958-df1b-4648-9838-4d500ed33aa3" width="400" controls></video>
+    </td>
+    <td>
+      <video src="https://github.com/user-attachments/assets/12852ec9-adb7-4423-9744-9ef938f13a1a" width="400" controls></video>
+    </td>
+  </tr>
+</table>
 
 ---
 
