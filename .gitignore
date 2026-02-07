@@ -49,7 +49,6 @@ sysinfo.txt
 *.apk
 *.aab
 
-# Documentation files (local only)
-INNOVATION_IMPROVEMENTS.md
-QUEST_TROUBLESHOOTING.md
-VISUAL_IMPROVEMENTS_SETUP.md
+# Documentation files (local only - exclude README.md)
+*.md
+!README.md
