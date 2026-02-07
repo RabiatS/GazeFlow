@@ -12,5 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/GazeScene.unity
     guid: 224c2d873608ae0488b3be5ccf81a7dc
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 9939b8771cc728b4aa5954ab96674057, type: 2}
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: f09010cb86a0a6e48b72de33215e571f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: d2ca0a71a7101ed4dbf2b4493e5fe709, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 55d423ff623ff0044953a993cde5dd5d, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: ca4aa6a2053ed3a499a3155bd400f05f, type: 2}
   m_UseUCBPForAssetBundles: 0
