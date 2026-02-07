@@ -5,10 +5,10 @@ using System.Collections.Generic;
 public class TileLayoutManager : MonoBehaviour
 {
     [Header("Layout Settings")]
-    public float radius = 3f;              // Distance from center
-    public float heightRange = 2f;        // Vertical spread
+    public float radius = 4f;              // Distance from center (increased for better spacing)
+    public float heightRange = 3f;        // Vertical spread (increased)
     public int tilesPerRow = 3;            // Tiles per horizontal row
-    public float tileSpacing = 1.5f;      // Space between tiles
+    public float tileSpacing = 2f;        // Space between tiles (increased)
     public bool arrangeInSphere = true;    // Sphere vs grid layout
     
     [Header("Animation")]

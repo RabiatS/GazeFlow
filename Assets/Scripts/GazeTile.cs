@@ -29,7 +29,28 @@ public class GazeTile : MonoBehaviour
         _baseScale = transform.localScale.x;
         _basePos = transform.localPosition;
 
+        // Make tile double-sided so it's always visible
+        MakeDoubleSided();
+        
         SetIdle();
+    }
+    
+    void MakeDoubleSided()
+    {
+        // Check if TileDoubleSided component exists, if not add it
+        if (GetComponent<TileDoubleSided>() == null)
+        {
+            gameObject.AddComponent<TileDoubleSided>();
+        }
+        
+        // Alternative: Rotate tile slightly to face camera better
+        // Or ensure material uses double-sided shader
+        MeshRenderer renderer = GetComponent<MeshRenderer>();
+        if (renderer != null && renderer.material != null)
+        {
+            // Enable double-sided rendering if shader supports it
+            renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        }
     }
 
     void Update()
@@ -46,11 +67,13 @@ public class GazeTile : MonoBehaviour
         if (tileRenderer != null && idleMaterial != null)
         {
             tileRenderer.material = idleMaterial;
-            Debug.Log($"Tile {tileIndex}: Set to IDLE material");
-        }
-        else
-        {
-            Debug.LogWarning($"Tile {tileIndex}: Cannot set idle - Renderer: {tileRenderer != null}, Material: {idleMaterial != null}");
+            
+            // Use material enhancer if available
+            TileMaterialEnhancer enhancer = GetComponent<TileMaterialEnhancer>();
+            if (enhancer == null)
+                enhancer = GetComponentInParent<TileMaterialEnhancer>();
+            if (enhancer != null)
+                enhancer.ApplyIdleMaterial();
         }
 
         transform.localScale = Vector3.one * _baseScale;
@@ -61,11 +84,13 @@ public class GazeTile : MonoBehaviour
         if (tileRenderer != null && activeMaterial != null)
         {
             tileRenderer.material = activeMaterial;
-            Debug.Log($"Tile {tileIndex}: Set to ACTIVE material");
-        }
-        else
-        {
-            Debug.LogWarning($"Tile {tileIndex}: Cannot set active - Renderer: {tileRenderer != null}, Material: {activeMaterial != null}");
+            
+            // Use material enhancer if available
+            TileMaterialEnhancer enhancer = GetComponent<TileMaterialEnhancer>();
+            if (enhancer == null)
+                enhancer = GetComponentInParent<TileMaterialEnhancer>();
+            if (enhancer != null)
+                enhancer.ApplyActiveMaterial();
         }
 
         transform.localScale = Vector3.one * _baseScale * activeScale;
@@ -74,17 +99,12 @@ public class GazeTile : MonoBehaviour
     // Called by MosaicGazeManager
     public void OnGazeEnter(float timeNow)
     {
-        if (isCompleted)
-        {
-            Debug.Log($"Tile {tileIndex}: Already completed, ignoring gaze");
-            return;
-        }
+        if (isCompleted) return;
 
         if (!_hasBeenLookedAt)
         {
             _hasBeenLookedAt = true;
             _firstLookTime = timeNow;
-            Debug.Log($"Tile {tileIndex}: First look at time {timeNow:F2}");
         }
 
         SetActive();
@@ -121,5 +141,14 @@ public class GazeTile : MonoBehaviour
         // notify manager so it can log
         if (onComplete != null)
             onComplete(this, firstLookTime, dwellDuration);
+    }
+    
+    // Reset tile to initial state (for restart)
+    public void ResetTile()
+    {
+        isCompleted = false;
+        _hasBeenLookedAt = false;
+        _firstLookTime = -1f;
+        SetIdle();
     }
 }

@@ -1,6 +1,7 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
+using UnityEngine;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 // Starter script - Planning to test with quest 3 then With Pro for tracking latr
 // Reminder to add tooltip for easier expl
@@ -16,6 +17,7 @@ public class GazeFragmentLogger : MonoBehaviour
     [Header("Settings")]
     public float hitRadius = 0.3f;   // How close to "center" counts as looking
     public string csvFileName = "gaze_log.csv";
+    public string desktopFolderPath = "C:\\Users\\lolad\\rabiatS\\projects\\VR projects\\Tartan Hacks - GazeFlow\\csv data";
 
     // Internal state
     private float fixationTime = 0f;
@@ -74,11 +76,32 @@ public class GazeFragmentLogger : MonoBehaviour
         SaveCsv();
     }
 
+
     public void SaveCsv()
     {
-        string path = Path.Combine(Application.persistentDataPath, csvFileName);
-        File.WriteAllLines(path, rows.ToArray());
-        Debug.Log($"Gaze log saved to: {path}");
-    }
-}
+        string path;
 
+        // If we're running in the editor, save to a desktop folder on the laptop
+#if UNITY_EDITOR
+        if (!string.IsNullOrEmpty(desktopFolderPath))
+        {
+            if (!Directory.Exists(desktopFolderPath))
+                Directory.CreateDirectory(desktopFolderPath);
+
+            path = Path.Combine(desktopFolderPath, csvFileName);
+        }
+        else
+        {
+            // Fallback to persistentDataPath if no desktop path set
+            path = Path.Combine(Application.persistentDataPath, csvFileName);
+        }
+#else
+        // In a build (e.g., on Quest), always use persistentDataPath
+        path = Path.Combine(Application.persistentDataPath, csvFileName);
+#endif
+
+        File.WriteAllLines(path, rows.ToArray());
+        Debug.Log("Eye control log saved to: " + path);
+    }
+
+}
