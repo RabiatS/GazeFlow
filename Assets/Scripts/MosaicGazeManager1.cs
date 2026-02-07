@@ -142,8 +142,26 @@ public class MosaicGazeManager1 : MonoBehaviour
         
         if (_sessionEnded) return;
 
+        // Manual test: Press T to trigger summary (for testing)
+        #if ENABLE_INPUT_SYSTEM
+        if (Keyboard.current != null && Keyboard.current.tKey.wasPressedThisFrame)
+        {
+            Debug.Log("Manual test: Triggering summary with current stats");
+            EndSession();
+            return;
+        }
+        #else
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log("Manual test: Triggering summary with current stats");
+            EndSession();
+            return;
+        }
+        #endif
+
         if (Time.time - _sessionStartTime >= sessionDuration)
         {
+            Debug.Log($"Session duration reached ({sessionDuration}s), ending session...");
             EndSession();
             return;
         }
@@ -325,9 +343,12 @@ public class MosaicGazeManager1 : MonoBehaviour
     
     void ShowSummaryCanvas(int completed, float avgDwell)
     {
+        Debug.Log($"ShowSummaryCanvas called! Completed: {completed}, Avg Dwell: {avgDwell:F2}s");
+        
         // Use better UI controller if available
         if (summaryUIController != null)
         {
+            Debug.Log("Using SummaryUIController");
             summaryUIController.ShowSummary(completed, tiles.Length, avgDwell);
             Debug.Log($"Summary UI shown via controller! Completed: {completed}, Avg Dwell: {avgDwell:F2}s");
             return;
@@ -336,18 +357,35 @@ public class MosaicGazeManager1 : MonoBehaviour
         // Fallback to original method
         if (summaryCanvas != null)
         {
+            Debug.Log("Summary canvas found, activating...");
+            
+            // Ensure canvas is active and enabled
             summaryCanvas.gameObject.SetActive(true);
             summaryCanvas.enabled = true;
+            
+            // Make sure canvas render mode is World Space (required for VR)
+            if (summaryCanvas.renderMode != RenderMode.WorldSpace)
+            {
+                Debug.LogWarning($"Canvas render mode is {summaryCanvas.renderMode}, changing to WorldSpace");
+                summaryCanvas.renderMode = RenderMode.WorldSpace;
+            }
 
             // Position canvas in front of camera with better spacing
             if (headCam != null)
             {
-                summaryCanvas.transform.position = headCam.position + headCam.forward * 2.5f;
+                Vector3 forwardPos = headCam.position + headCam.forward * 3f; // Increased distance
+                summaryCanvas.transform.position = forwardPos;
                 summaryCanvas.transform.LookAt(headCam);
                 summaryCanvas.transform.Rotate(0f, 180f, 0f); // Face the camera
                 
-                // Scale canvas to be more readable (adjust based on your canvas setup)
-                summaryCanvas.transform.localScale = Vector3.one * 0.002f;
+                // Scale canvas to be more readable - increased scale for better visibility
+                summaryCanvas.transform.localScale = Vector3.one * 0.003f; // Increased from 0.002f
+                
+                Debug.Log($"Canvas positioned at: {forwardPos}, Scale: {summaryCanvas.transform.localScale}");
+            }
+            else
+            {
+                Debug.LogWarning("headCam is null! Cannot position canvas.");
             }
 
             // Calculate completion percentage
@@ -364,9 +402,15 @@ public class MosaicGazeManager1 : MonoBehaviour
                 string emoji = GetCompletionEmoji(completionPercent);
                 tilesCompletedText.text = $"{emoji}\n\n<size=64>Tiles Completed</size>\n<size=88><b>{completed}</b></size>\n<size=44>out of {tiles.Length}</size>";
                 tilesCompletedText.gameObject.SetActive(true);
+                tilesCompletedText.enabled = true;
                 tilesCompletedText.alignment = TMPro.TextAlignmentOptions.Center;
                 tilesCompletedText.textWrappingMode = TMPro.TextWrappingModes.Normal;
                 tilesCompletedText.lineSpacing = 8f;
+                Debug.Log("tilesCompletedText updated");
+            }
+            else
+            {
+                Debug.LogWarning("tilesCompletedText is not assigned!");
             }
 
             // Percentage Text (NEW)
@@ -375,9 +419,15 @@ public class MosaicGazeManager1 : MonoBehaviour
                 string performance = GetPerformanceRating(completionPercent);
                 percentageText.text = $"<size=80><b>{completionPercent:F0}%</b></size>\n<size=52>{performance}</size>";
                 percentageText.gameObject.SetActive(true);
+                percentageText.enabled = true;
                 percentageText.alignment = TMPro.TextAlignmentOptions.Center;
                 percentageText.textWrappingMode = TMPro.TextWrappingModes.Normal;
                 percentageText.lineSpacing = 5f;
+                Debug.Log("percentageText updated");
+            }
+            else
+            {
+                Debug.LogWarning("percentageText is not assigned!");
             }
 
             // Average Dwell Text
@@ -386,9 +436,15 @@ public class MosaicGazeManager1 : MonoBehaviour
                 string speedEmoji = GetSpeedEmoji(avgDwell);
                 avgDwellText.text = $"{speedEmoji}\n\n<size=56>Average Focus</size>\n<size=76><b>{avgDwell:F2}s</b></size>\n<size=44>per tile</size>";
                 avgDwellText.gameObject.SetActive(true);
+                avgDwellText.enabled = true;
                 avgDwellText.alignment = TMPro.TextAlignmentOptions.Center;
                 avgDwellText.textWrappingMode = TMPro.TextWrappingModes.Normal;
                 avgDwellText.lineSpacing = 8f;
+                Debug.Log("avgDwellText updated");
+            }
+            else
+            {
+                Debug.LogWarning("avgDwellText is not assigned!");
             }
             
             // Analysis Text (NEW)
@@ -397,16 +453,25 @@ public class MosaicGazeManager1 : MonoBehaviour
                 string analysis = BuildAnalysisText(avgSaccadeSpeed, totalGazeDistance, avgLookSpeed, completed);
                 analysisText.text = analysis;
                 analysisText.gameObject.SetActive(true);
+                analysisText.enabled = true;
                 analysisText.alignment = TMPro.TextAlignmentOptions.Center;
                 analysisText.textWrappingMode = TMPro.TextWrappingModes.Normal;
                 analysisText.lineSpacing = 6f;
+                Debug.Log("analysisText updated");
+            }
+            else
+            {
+                Debug.LogWarning("analysisText is not assigned!");
             }
             
-            Debug.Log($"Summary canvas shown! Completed: {completed}, Avg Dwell: {avgDwell:F2}s");
+            // Force canvas to update
+            Canvas.ForceUpdateCanvases();
+            
+            Debug.Log($"Summary canvas shown! Completed: {completed}, Avg Dwell: {avgDwell:F2}s, Canvas active: {summaryCanvas.gameObject.activeSelf}, Enabled: {summaryCanvas.enabled}");
         }
         else
         {
-            Debug.LogWarning("Summary canvas is not assigned!");
+            Debug.LogError("Summary canvas is not assigned in MosaicGazeManager1! Please assign it in the Unity Inspector.");
         }
     }
     
