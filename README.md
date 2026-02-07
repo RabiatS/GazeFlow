@@ -13,7 +13,7 @@ https://github.com/user-attachments/assets/12852ec9-adb7-4423-9744-9ef938f13a1a
 
 Modern digital life teaches kids to stare at flat, glowing rectangles from one fixed distance. That's convenient for devices, but it encourages static focus, limited eye movement, and visual fatigue instead of rich, exploratory seeing. GazeFlow flips that pattern: what if our digital tools invited eyes to roam, rewarded healthy movement, and turned attention itself into the main way you interact?
 
-In this hackathon prototype, we build a VR mosaic of floating tiles around the user. Each tile quietly waits in the dark until it's noticed. When you look at a tile, it brightens, grows, and locks in as part of a larger pattern. Over a short session, your tiny micro‑movements—where you look, for how long, and in what sequence—assemble into a glowing, personalized mosaic.
+In this hackathon prototype, we build a VR mosaic of floating tiles around the user. Each tile quietly waits in the dark until it's noticed. When you look at a tile, it brightens, grows, and locks in as part of a larger pattern. Over a short session, your tiny micro‑movements, where you look, for how long, and in what sequence, assemble into a glowing, personalized mosaic.
 
 We're inspired by work like [Luminopia](https://www.luminopia.com/) and other VR‑based vision therapies that guide vision intentionally rather than just cutting screen time, but GazeFlow is a hackathon‑scale exploration, not a medical device. Our goal is to prototype interaction patterns and logging tools that make it easier to design healthier, gaze‑aware experiences in the future.
 
@@ -45,7 +45,7 @@ We're inspired by work like [Luminopia](https://www.luminopia.com/) and other VR
 
 ## Vision
 
-Because so much of children's visual world now happens on 2D screens, they often don't experience the full range of oculomotor behavior—shifting depth, convergence, smooth tracking, and exploratory scanning—that their visual systems evolved for. Our goal isn't to eliminate screens; that ship has sailed. It's to **design digital experiences that work with, rather than against, healthy visual engagement**.
+Because so much of children's visual world now happens on 2D screens, they often don't experience the full range of oculomotor behavior—shifting depth, convergence, smooth tracking, and exploratory scanning, that their visual systems evolved for. Our goal isn't to eliminate screens; that ship has sailed. It's to **design digital experiences that work with, rather than against, healthy visual engagement**.
 
 This iteration of GazeFlow explores how immersive XR can:
 
@@ -114,7 +114,7 @@ We're not claiming clinical impact. Instead, GazeFlow is:
 - A starting point for tools that help designers **see and log attention** in VR scenes.
 - An example of using XR and eye‑tracking to **challenge the passive, stare‑at‑a‑screen default** and experiment with more dynamic visual behavior.
 
-In future iterations, the same core structure—gaze tiles, dwell detection, and logging—could be extended into:
+In future iterations, the same core structure, gaze tiles, dwell detection, and logging—could be extended into:
 
 - Child‑friendly visual "quests" that encourage wider scanning and depth changes.  
 - Research prototypes for studying attention, fatigue, or engagement in VR.  
