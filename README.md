@@ -2,6 +2,10 @@
 
 A calm XR eye‑tracking experience that turns scattered glances into a living mosaic of light, exploring how our attention shapes virtual space in real time.
 
+
+https://github.com/user-attachments/assets/9bfb15b2-a1f6-4ad8-a746-1cf95cd8bed7
+
+
 ---
 
 ## Overview
@@ -163,7 +167,7 @@ After the hackathon, we'd like to explore:
 - Adaptive mosaics that rearrange themselves based on where users haven't explored yet.  
 - Integration with more formal visual tasks (peripheral detection, smooth pursuit paths) while keeping the calm, art‑like framing.  
 - Collaborations with researchers and clinicians to understand what kinds of gaze metrics are most meaningful for real‑world applications.
-
+Youtube link: https://youtu.be/mAjotcGA1RQ
 ---
 
 ## Working with the Repo (For Teammates)
