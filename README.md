@@ -53,8 +53,11 @@ We're inspired by work like [Luminopia](https://www.luminopia.com/) and other VR
   Email: [urd@andrew.cmu.edu](mailto:urd@andrew.cmu.edu)  
   GitHub: [https://github.com/Umaracheldhamija](https://github.com/Umaracheldhamija)
 
-- **Priyal Shrivastava – Developer**  
+- **Priyal Shrivastava – UX Researcher**  
   Email: [pshriva2@andrew.cmu.edu](mailto:pshriva2@andrew.cmu.edu)
+
+  - **Jason Park – Product Designer**  
+  Email: [pjasonp2@andrew.cmu.edu](mailto:jasonp2@andrew.cmu.edu)
 
 ---
 
