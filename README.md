@@ -56,7 +56,7 @@ We're inspired by work like [Luminopia](https://www.luminopia.com/) and other VR
 - **Priyal Shrivastava – UX Researcher**  
   Email: [pshriva2@andrew.cmu.edu](mailto:pshriva2@andrew.cmu.edu)
 
-  - **Jason Park – Product Designer**  
+- **Jason Park – Product Designer**  
   Email: [pjasonp2@andrew.cmu.edu](mailto:jasonp2@andrew.cmu.edu)
 
 ---
