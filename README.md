@@ -63,7 +63,7 @@ We're inspired by work like [Luminopia](https://www.luminopia.com/) and other VR
 
 ## Vision
 
-Because so much of children's visual world now happens on 2D screens, they often don't experience the full range of oculomotor behavior—shifting depth, convergence, smooth tracking, and exploratory scanning, that their visual systems evolved for. Our goal isn't to eliminate screens; that ship has sailed. It's to **design digital experiences that work with, rather than against, healthy visual engagement**.
+Because so much of children's visual world now happens on 2D screens, they often don't experience the full range of oculomotor behavior, shifting depth, convergence, smooth tracking, and exploratory scanning, that their visual systems evolved for. Our goal isn't to eliminate screens; that ship has sailed. It's to **design digital experiences that work with, rather than against, healthy visual engagement**.
 
 This iteration of GazeFlow explores how immersive XR can:
 
